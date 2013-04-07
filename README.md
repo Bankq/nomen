@@ -1,7 +1,7 @@
 Nomen
 =====
 
-Nomen is a tool to transliterate Chinese names into English names, in reasonable way.
+Nomen is a tool to transliterate Chinese names into English names, in a reasonable way.
 
 Examples
 --------
