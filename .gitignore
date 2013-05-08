@@ -4,6 +4,10 @@ include/*
 lib/*
 .Python
 
+# emacs temp files
+*~
+\#*\#
+
 *.py[cod]
 
 # C extensions
