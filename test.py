@@ -13,6 +13,14 @@ def test_align():
         for t in l:
             print t[0], t[1]
 
+def test_lexicons():
+    l = [(u'你', u'you'), (u'好', u'me'), (u'美', u'awesome')]
+    lexi = {}
+    generate_lexicons(l,lexi)
+    assert len(lexi.keys()) == 6
+    for i in data.lexicons['thing']:
+        print i[0], i[1]
+
 def test_file():
     assert data.count == 17613 and len(data.ch) == len(data.en)
 
@@ -25,7 +33,9 @@ def test_find():
     assert data.find("ChuckNorris") is None
 
 def test_nomen():
-    pass
+    n = Nomen()
+    n.load()
+    print n.get(u'Disneyton')
 
 def test_hyphenator():
     s = h.syllables(u"Wat")

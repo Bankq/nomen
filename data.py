@@ -19,12 +19,12 @@ class Data(object):
         self.en = []
         self.syllables = []
         self.pairs = []
-        self.lexicon = {}
+        self.lexicons = {}
         self.pinyin = []
         self.count = 0
         self.parse()
         self.align()
-        self.produce_lexicon()
+        self.produce_lexicons()
 
     def __repr__(self):
         return "File: "+self.filepath+" . Contains "+str(self.count)+" name pairs."
@@ -78,12 +78,9 @@ class Data(object):
 
 
 
-    def produce_lexicon(self):
+    def produce_lexicons(self):
         for i in self.pairs:
-            # i is a list of tuples (ch, syll)
-            
-            pass
-        pass
+            generate_lexicons(i, self.lexicons)                        
         
     def find(self, key):
         try:
@@ -103,6 +100,30 @@ class Data(object):
                 return self.ch.index(value)
             except ValueError:
                 return None
+
+# l: list of tuples (chinese char, english syllables)
+# lexi: dictionary of lexicons            
+def generate_lexicons(l, lexi):
+    for i in range(len(l)):
+        for j in range(len(l)):
+            c = u''
+            e = u''
+            for k in range(i, j+1):
+                c = c + l[k][0]
+                e = e + l[k][1]
+            
+            if e in lexi:
+                clist = [t[0] for t in lexi[e]]
+                if c in clist:
+                    p = clist.index(c)
+                    lexi[e][p][1] = lexi[e][p][1] + 1
+                else:
+                    lexi[e].append([c, 1])
+            else:
+                if e:
+                    lexi[e] = [[c,1]]
+                    
+                    
 
 def do_align(c, syll):
     l = []
