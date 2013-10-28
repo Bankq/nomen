@@ -1,15 +1,7 @@
 Nomen
 =====
 
-Nomen is a tool to transliterate Chinese names into English names, in a reasonable way.
-
-Examples
---------
-
-``` 
->>> nomen.get('张三')
-Sam Zhang
-``` 
+Nomen is a tool to transliterate English names into Chinese names, in a reasonable way.
 
 License
 -------
